@@ -21,6 +21,9 @@ public class RockPaperScissorsTest {
 				if(other == Scissors){
 					return WIN;
 				}
+				if(this == Scissors && other == Paper){
+					return WIN;
+				}
 				return LOSE;
 			}
 			if(this == Paper && other == Scissors){
@@ -70,7 +73,7 @@ public class RockPaperScissorsTest {
 	public void scissorsAgainstPaper_should_win(){
 		assertRockPaperScissors(WIN, Scissors, Paper);
 	}
-
+	
 	
 	private void assertRockPaperScissors(Result expected, Gesture gesture1,
 			Gesture gesture2) {
