@@ -57,6 +57,11 @@ public class RockPaperScissorsTest {
 	public void rockAgainstRock_should_truce() {
 		assertRockPaperScissors(TRUCE, Rock, Rock);
 	}
+	
+	@Test
+	public void paperAgainstScissors_should_lose(){
+		assertRockPaperScissors(LOSE, Paper, Scissors);
+	}
 
 	
 	private void assertRockPaperScissors(Result expected, Gesture gesture1,
