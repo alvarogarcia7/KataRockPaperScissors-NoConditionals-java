@@ -29,10 +29,13 @@ public class RockPaperScissorsTest {
 				}
 				return LOSE;
 			}
-			if(this == Paper && other == Scissors){
-				return LOSE;
+			if(this == Paper){
+				if(other == Scissors){
+					return LOSE;
+				}
+				return WIN;
 			}
-			return WIN;
+			throw new IllegalArgumentException("the pair " + this + " and " + other + " were not recognized.");
 		}
 
 	}
