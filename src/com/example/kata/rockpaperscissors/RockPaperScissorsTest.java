@@ -17,11 +17,17 @@ public class RockPaperScissorsTest {
 			if(other == this ){
 				return TRUCE;
 			}
-			if(this == Rock || this == Scissors){
+			if(this == Scissors){
 				if(other == Scissors){
 					return WIN;
 				}
-				if(this == Scissors && other == Paper){
+				if(other == Paper){
+					return WIN;
+				}
+				return LOSE;
+			}
+			if(this == Rock){
+				if(other == Scissors){
 					return WIN;
 				}
 				return LOSE;
