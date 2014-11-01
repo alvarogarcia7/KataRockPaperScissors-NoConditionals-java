@@ -13,15 +13,22 @@ public class RockPaperScissorsTest {
 		Rock {
 			@Override
 			Result againstOther(Gesture other) {
-				if (other == Scissors) {
-					return WIN;
-				}
-				return LOSE;
+				return other.againstRock();
 			}
 
 			@Override
 			protected Result againstPaper() {
 				return WIN;
+			}
+
+			@Override
+			protected Result againstScissors() {
+				return LOSE;
+			}
+
+			@Override
+			protected Result againstRock() {
+				return TRUCE;
 			}
 		},
 		Paper {
@@ -34,28 +41,46 @@ public class RockPaperScissorsTest {
 			protected Result againstPaper() {
 				return TRUCE;
 			}
+
+			@Override
+			protected Result againstScissors() {
+				return WIN;
+			}
+
+			@Override
+			protected Result againstRock() {
+				return LOSE;
+			}
 		},
 		Scissors {
 			@Override
 			Result againstOther(Gesture other) {
-				if (other == Paper) {
-					return WIN;
-				}
-				return LOSE;
+				return other.againstScissors();
 			}
 
 			@Override
 			protected Result againstPaper() {
 				return LOSE;
 			}
+
+			@Override
+			protected Result againstScissors() {
+				return TRUCE;
+			}
+
+			@Override
+			protected Result againstRock() {
+				return WIN;
+			}
 		};
 
 		public Result against(Gesture other) {
-			if (other == this && this != Paper) {
-				return TRUCE;
-			}
 			return this.againstOther(other);
 		}
+
+		protected abstract Result againstRock();
+
+		protected abstract Result againstScissors();
 
 		protected abstract Result againstPaper();
 
