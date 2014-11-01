@@ -9,7 +9,7 @@ public class RockPaperScissorsTest {
 	public enum Gesture {
 		Rock, Paper;
 
-		public Result against(Gesture paper2) {
+		public Result against(Gesture other) {
 			return Result.LOSE;
 		}
 
