@@ -12,6 +12,9 @@ public class RockPaperScissorsTest {
 
 		public Result against(Gesture other) {
 			if(this == Rock || this == Scissors){
+				if(other == Scissors){
+					return Result.WIN;
+				}
 				return Result.LOSE;
 			}
 			return Result.WIN;
