@@ -14,6 +14,9 @@ public class RockPaperScissorsTest {
 		Rock, Paper, Scissors;
 
 		public Result against(Gesture other) {
+			if(other == this ){
+				return TRUCE;
+			}
 			if(this == Rock || this == Scissors){
 				if(other == Scissors){
 					return WIN;
@@ -26,9 +29,9 @@ public class RockPaperScissorsTest {
 	}
 
 	public enum Result {
-		LOSE, WIN
-
+		LOSE, WIN, TRUCE
 	}
+
 
 	@Test
 	public void rockAgainstPaper_should_lose(){
