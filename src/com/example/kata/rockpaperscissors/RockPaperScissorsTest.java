@@ -8,10 +8,10 @@ import org.junit.Test;
 public class RockPaperScissorsTest {
 	
 	public enum Gesture {
-		Rock, Paper;
+		Rock, Paper, Scissors;
 
 		public Result against(Gesture other) {
-			if(this == Rock){
+			if(this == Rock || this == Scissors){
 				return Result.LOSE;
 			}
 			return Result.WIN;
