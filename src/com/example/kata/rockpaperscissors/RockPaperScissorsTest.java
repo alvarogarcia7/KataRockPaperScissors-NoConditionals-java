@@ -27,11 +27,21 @@ public class RockPaperScissorsTest {
 
 	}
 
+	private static final Result LOSE = Result.LOSE;
+	private static final Gesture Rock = Gesture.Rock;
+	private static final Gesture Paper = Gesture.Paper;
+	
+
 	@Test
 	public void rockAgainstPaper_should_lose(){
-		assertEquals(Result.LOSE, Gesture.Rock.against(Gesture.Paper));
+		assertRockPaperScissors(LOSE, Rock, Paper);
 	}
 	
+	private void assertRockPaperScissors(Result expected, Gesture gesture1,
+			Gesture gesture2) {
+		assertEquals(expected, gesture1.against(gesture2));
+	}
+
 	@Test
 	public void paperAgainstRock_should_win(){
 		assertEquals(Result.WIN, Gesture.Paper.against(Gesture.Rock));
