@@ -38,6 +38,11 @@ public class RockPaperScissorsTest {
 	public void scissorsAgainstRock_should_lose(){
 		assertEquals(Result.LOSE, Gesture.Scissors.against(Gesture.Rock));
 	}
+	
+	@Test
+	public void rockAgainstScissors_should_win(){
+		assertEquals(Result.WIN, Gesture.Rock.against(Gesture.Scissors));
+	}
 
 
 }
