@@ -34,11 +34,6 @@ public class RockPaperScissorsTest {
 	public void rockAgainstPaper_should_lose(){
 		assertRockPaperScissors(LOSE, Rock, Paper);
 	}
-	
-	private void assertRockPaperScissors(Result expected, Gesture gesture1,
-			Gesture gesture2) {
-		assertEquals(expected, gesture1.against(gesture2));
-	}
 
 	@Test
 	public void paperAgainstRock_should_win() {
@@ -55,4 +50,8 @@ public class RockPaperScissorsTest {
 		assertRockPaperScissors(WIN, Rock, Scissors);
 	}
 
+	private void assertRockPaperScissors(Result expected, Gesture gesture1,
+			Gesture gesture2) {
+		assertEquals(expected, gesture1.against(gesture2));
+	}
 }
