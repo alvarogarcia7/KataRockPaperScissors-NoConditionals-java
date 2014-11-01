@@ -44,18 +44,17 @@ public class RockPaperScissorsTest {
 
 	@Test
 	public void paperAgainstRock_should_win(){
-		assertEquals(Result.WIN, Gesture.Paper.against(Gesture.Rock));
+		assertRockPaperScissors(Result.WIN, Gesture.Paper,Gesture.Rock);
 	}
 	
 	@Test
 	public void scissorsAgainstRock_should_lose(){
-		assertEquals(Result.LOSE, Gesture.Scissors.against(Gesture.Rock));
+		assertRockPaperScissors(Result.LOSE, Gesture.Scissors, Gesture.Rock);
 	}
 	
 	@Test
 	public void rockAgainstScissors_should_win(){
-		assertEquals(Result.WIN, Gesture.Rock.against(Gesture.Scissors));
+		assertRockPaperScissors(Result.WIN, Gesture.Rock, Gesture.Scissors);
 	}
-
 
 }
