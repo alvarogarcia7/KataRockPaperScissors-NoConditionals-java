@@ -10,13 +10,16 @@ public class RockPaperScissorsTest {
 		Rock, Paper;
 
 		public Result against(Gesture other) {
-			return Result.LOSE;
+			if(this == Rock){
+				return Result.LOSE;
+			}
+			return Result.WIN;
 		}
 
 	}
 
 	public enum Result {
-		LOSE
+		LOSE, WIN
 
 	}
 
