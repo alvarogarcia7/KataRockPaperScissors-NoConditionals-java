@@ -7,36 +7,45 @@ import org.junit.Test;
 import static com.example.kata.rockpaperscissors.RockPaperScissorsTest.Gesture.*;
 import static com.example.kata.rockpaperscissors.RockPaperScissorsTest.Result.*;
 
-
 public class RockPaperScissorsTest {
-	
-	public enum Gesture {
-		Rock, Paper, Scissors;
 
-		public Result against(Gesture other) {
-			if(other == this ){
-				return TRUCE;
-			}
-			if(this == Scissors){
-				if(other == Paper){
+	public enum Gesture {
+		Rock {
+			@Override
+			Result againstOther(Gesture other) {
+				if (other == Scissors) {
 					return WIN;
 				}
 				return LOSE;
 			}
-			if(this == Rock){
-				if(other == Scissors){
-					return WIN;
-				}
-				return LOSE;
-			}
-			if(this == Paper){
-				if(other == Scissors){
+		},
+		Paper {
+			@Override
+			Result againstOther(Gesture other) {
+				if (other == Scissors) {
 					return LOSE;
 				}
 				return WIN;
 			}
-			throw new IllegalArgumentException("the pair " + this + " and " + other + " were not recognized.");
+		},
+		Scissors {
+			@Override
+			Result againstOther(Gesture other) {
+				if (other == Paper) {
+					return WIN;
+				}
+				return LOSE;
+			}
+		};
+
+		public Result against(Gesture other) {
+			if (other == this) {
+				return TRUCE;
+			}
+			return this.againstOther(other);
 		}
+
+		abstract Result againstOther(Gesture other);
 
 	}
 
@@ -44,9 +53,8 @@ public class RockPaperScissorsTest {
 		LOSE, WIN, TRUCE
 	}
 
-
 	@Test
-	public void rockAgainstPaper_should_lose(){
+	public void rockAgainstPaper_should_lose() {
 		assertRockPaperScissors(LOSE, Rock, Paper);
 	}
 
@@ -69,28 +77,27 @@ public class RockPaperScissorsTest {
 	public void rockAgainstRock_should_truce() {
 		assertRockPaperScissors(TRUCE, Rock, Rock);
 	}
-	
+
 	@Test
-	public void paperAgainstScissors_should_lose(){
+	public void paperAgainstScissors_should_lose() {
 		assertRockPaperScissors(LOSE, Paper, Scissors);
 	}
-	
+
 	@Test
-	public void scissorsAgainstPaper_should_win(){
+	public void scissorsAgainstPaper_should_win() {
 		assertRockPaperScissors(WIN, Scissors, Paper);
 	}
-	
+
 	@Test
 	public void scissorsAgainstScissors_should_truce() {
 		assertRockPaperScissors(TRUCE, Scissors, Scissors);
 	}
-	
+
 	@Test
 	public void paperAgainstPaper_should_truce() {
 		assertRockPaperScissors(TRUCE, Paper, Paper);
 	}
-	
-	
+
 	private void assertRockPaperScissors(Result expected, Gesture gesture1,
 			Gesture gesture2) {
 		assertEquals(expected, gesture1.against(gesture2));
