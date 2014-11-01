@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.example.kata.rockpaperscissors.RockPaperScissorsTest.Gesture;
+import com.example.kata.rockpaperscissors.RockPaperScissorsTest.Result;
+
 
 public class RockPaperScissorsTest {
 	
@@ -28,8 +31,10 @@ public class RockPaperScissorsTest {
 	}
 
 	private static final Result LOSE = Result.LOSE;
+	private static final Result WIN = Result.WIN;
 	private static final Gesture Rock = Gesture.Rock;
 	private static final Gesture Paper = Gesture.Paper;
+	private static final Gesture Scissors = Gesture.Scissors;
 	
 
 	@Test
@@ -43,18 +48,18 @@ public class RockPaperScissorsTest {
 	}
 
 	@Test
-	public void paperAgainstRock_should_win(){
-		assertRockPaperScissors(Result.WIN, Gesture.Paper,Gesture.Rock);
+	public void paperAgainstRock_should_win() {
+		assertRockPaperScissors(WIN, Paper, Rock);
 	}
-	
+
 	@Test
-	public void scissorsAgainstRock_should_lose(){
-		assertRockPaperScissors(Result.LOSE, Gesture.Scissors, Gesture.Rock);
+	public void scissorsAgainstRock_should_lose() {
+		assertRockPaperScissors(LOSE, Scissors, Rock);
 	}
-	
+
 	@Test
-	public void rockAgainstScissors_should_win(){
-		assertRockPaperScissors(Result.WIN, Gesture.Rock, Gesture.Scissors);
+	public void rockAgainstScissors_should_win() {
+		assertRockPaperScissors(WIN, Rock, Scissors);
 	}
 
 }
