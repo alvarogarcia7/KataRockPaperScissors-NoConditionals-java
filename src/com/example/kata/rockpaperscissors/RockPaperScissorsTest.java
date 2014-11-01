@@ -18,9 +18,6 @@ public class RockPaperScissorsTest {
 				return TRUCE;
 			}
 			if(this == Scissors){
-				if(other == Scissors){
-					return WIN;
-				}
 				if(other == Paper){
 					return WIN;
 				}
