@@ -23,6 +23,9 @@ public class RockPaperScissorsTest {
 				}
 				return LOSE;
 			}
+			if(this == Paper && other == Scissors){
+				return LOSE;
+			}
 			return WIN;
 		}
 
